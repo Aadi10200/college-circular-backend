@@ -121,6 +121,7 @@ def get_circulars_for_student(student_id):
 
 #api for adding circular read/unread status
 @student_bp.route("/student/<int:student_id>/circular/<int:circular_id>/read",methods=["POST"])
+@require_active_students
 def mark_circular_read(student_id,circular_id):
     student = Student.query.get(student_id)
     if not student:
